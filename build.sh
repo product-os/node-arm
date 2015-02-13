@@ -16,4 +16,5 @@ cd node \
 
 # Upload to S3
 
-s3cmd put -c .s3cfg node/$TAR_FILE s3://$BUCKET_NAME/node/v$NODE_VERSION/
+sed -i -e "s/ACCESS/$ACCESS_KEY/" -e "s/SECRET/$SECRET_KEY/" /.s3cfg
+s3cmd put -c /.s3cfg node/$TAR_FILE s3://$BUCKET_NAME/node/v$NODE_VERSION/
