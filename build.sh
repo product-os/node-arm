@@ -12,9 +12,10 @@ BUCKET_NAME=resin-packages
 cd node \
 	&& git checkout v$NODE_VERSION \
 	&& make -j$(nproc) binary DESTCPU=$ARCH \
+	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
 	&& cd /
 
 # Upload to S3
 
-sed -i -e "s/ACCESS/$ACCESS_KEY/" -e "s/SECRET/$SECRET_KEY/" /.s3cfg
+sed -i -e "s@ACCESS@$ACCESS_KEY@" -e "s@SECRET@$SECRET_KEY@" /.s3cfg
 s3cmd -P put -c /.s3cfg node/$TAR_FILE s3://$BUCKET_NAME/node/v$NODE_VERSION/
