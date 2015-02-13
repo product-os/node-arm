@@ -11,7 +11,7 @@ BUCKET_NAME=resin-packages
 # compile node
 cd node \
 	&& git checkout v$NODE_VERSION \
-	&& make binary DESTCPU=$ARCH \
+	&& make -j$(nproc) binary DESTCPU=$ARCH \
 	&& cd /
 
 # Upload to S3
