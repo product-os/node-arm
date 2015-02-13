@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 # Install deps
 RUN apt-get -q update \
-		&& apt-get install -y git lib32stdc++6 python build-essential lib32z1 wget --no-install-recommends
+		&& apt-get install -y git lib32stdc++6 python build-essential lib32z1 wget ca-certificates --no-install-recommends
 
 # Install S3 tool
 RUN wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-key add - \
