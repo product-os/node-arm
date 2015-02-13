@@ -11,7 +11,7 @@ BUCKET_NAME=resin-packages
 # compile node
 cd node \
 	&& git checkout v$NODE_VERSION \
-	&& make -j$(nproc) binary DESTCPU=$ARCH \
+	&& make -j$(nproc) binary DESTCPU=$ARCH BINARYNAME=node-v$NODE_VERSION-linux-$ARCH \
 	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
 	&& cd /
 
