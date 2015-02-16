@@ -7,8 +7,7 @@ RUN apt-get -q update \
 		&& rm -rf /var/lib/apt/lists/*
 
 # Install AWS CLI
-RUN pip install awscli \
-		&& rm -rf /var/lib/apt/lists/*
+RUN pip install awscli
 
 # Set ENV vars
 ENV AR /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-ar
