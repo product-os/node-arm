@@ -2,11 +2,12 @@ FROM ubuntu:14.04
 
 # Install deps
 RUN apt-get -q update \
-		&& apt-get install -y git lib32stdc++6 python python-pip build-essential lib32z1 wget ca-certificates --no-install-recommends
+		&& apt-get install -y git lib32stdc++6 python python-pip build-essential lib32z1 wget ca-certificates --no-install-recommends \
+		&& apt-get clean \
+		&& rm -rf /var/lib/apt/lists/*
 
 # Install AWS CLI
 RUN pip install awscli \
-		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*
 
 # Set ENV vars
