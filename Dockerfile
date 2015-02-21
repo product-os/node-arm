@@ -2,15 +2,12 @@ FROM ubuntu:14.04
 
 # Install deps
 RUN apt-get -q update \
-		&& apt-get install -y git lib32stdc++6 python build-essential lib32z1 wget ca-certificates --no-install-recommends
-
-# Install S3 tool
-RUN wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-key add - \
-		&& wget -O/etc/apt/sources.list.d/s3tools.list http://s3tools.org/repo/deb-all/stable/s3tools.list \
-		&& apt-get -q update \
-		&& apt-get install -y s3cmd \
+		&& apt-get install -y git lib32stdc++6 python python-pip build-essential lib32z1 wget ca-certificates --no-install-recommends \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*
+
+# Install AWS CLI
+RUN pip install awscli
 
 # Set ENV vars
 ENV AR /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-ar
