@@ -12,7 +12,7 @@ BUCKET_NAME=$BUCKET_NAME
 cd node \
 	&& git checkout v$NODE_VERSION \
 	&& make -j$(nproc) binary DESTCPU=$ARCH \
-	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
+	&& mv node-v$NODE_VERSION-linux-x86.tar.gz $TAR_FILE \
 	&& cd /
 
 # Upload to S3 (using AWS CLI)
