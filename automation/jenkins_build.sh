@@ -3,7 +3,7 @@
 # Jenkins build steps
 NODE_VERSIONS="0.8.28 0.9.12"
 
-for v in $(seq 0 36); do
+for v in $(seq 0 38); do
         NODE_VERSIONS="$NODE_VERSIONS 0.10.$v"
 done
 
@@ -11,7 +11,7 @@ for v in $(seq 0 16); do
         NODE_VERSIONS="$NODE_VERSIONS 0.11.$v"
 done
 
-for v in $(seq 0 0); do
+for v in $(seq 0 2); do
         NODE_VERSIONS="$NODE_VERSIONS 0.12.$v"
 done
 
