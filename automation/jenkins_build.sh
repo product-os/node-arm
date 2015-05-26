@@ -11,7 +11,7 @@ for v in $(seq 0 16); do
         NODE_VERSIONS="$NODE_VERSIONS 0.11.$v"
 done
 
-for v in $(seq 0 2); do
+for v in $(seq 0 4); do
         NODE_VERSIONS="$NODE_VERSIONS 0.12.$v"
 done
 
