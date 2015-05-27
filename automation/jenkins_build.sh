@@ -17,7 +17,7 @@ done
 
 cd $DIR_NAME
 
-docker build -t node-$DIR_NAME-builder .
+docker build --no-cache=true -t node-$DIR_NAME-builder .
 
 for NODE_VERSION in $NODE_VERSIONS
 do
