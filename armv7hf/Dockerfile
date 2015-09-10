@@ -9,6 +9,6 @@ RUN apt-get -q update \
 # Install AWS CLI
 RUN pip install awscli
 
-RUN git clone https://github.com/joyent/node.git
+RUN git clone https://github.com/nodejs/node.git
 
 COPY . /
