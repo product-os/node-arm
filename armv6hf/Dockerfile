@@ -17,6 +17,6 @@ ENV LINK /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linu
 
 
 RUN git clone https://github.com/raspberrypi/tools.git --depth 1 \
-		&& git clone https://github.com/joyent/node.git
+		&& git clone https://github.com/nodejs/node.git
 
 COPY . /
