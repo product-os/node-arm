@@ -1,8 +1,7 @@
-FROM resin/armv7hf-toolchain
+FROM resin/armv7hf-debian:latest
 
-# Install deps
 RUN apt-get -q update \
-		&& apt-get install -y python-pip gcc-multilib g++-multilib --no-install-recommends \
+		&& apt-get install -y git python python-dev build-essential wget ca-certificates libssl-dev --no-install-recommends \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*
 
