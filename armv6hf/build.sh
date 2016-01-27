@@ -11,7 +11,7 @@ BUCKET_NAME=$BUCKET_NAME
 # compile node
 cd node \
 	&& git checkout v$NODE_VERSION \
-	&& ./configure --without-snapshot --dest-cpu=$ARCH \
+	&& ./configure --without-snapshot --dest-cpu=$ARCH --prefix / \
 	&& make install -j$(nproc) DESTDIR=$TAR_FILE V=1 PORTABLE=1 \
 	&& cp LICENSE $TAR_FILE \
 	&& tar -cvzf $TAR_FILE.tar.gz $TAR_FILE \
