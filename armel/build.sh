@@ -20,7 +20,7 @@ fi
 # compile node
 cd node \
 	&& git checkout v$NODE_VERSION \
-	&& make -j$(nproc) binary DESTCPU=$ARCH CONFIG_FLAGS=$BUILD_FLAGs \
+	&& make -j$(nproc) binary DESTCPU="$ARCH" CONFIG_FLAGS="$BUILD_FLAGs" \
 	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
