@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cp -f commit-table $DISTRO/$ARCH
 cd $DISTRO
 cd $ARCH
 
@@ -11,3 +12,4 @@ do
 					-e SECRET_KEY=$SECRET_KEY \
 					-e BUCKET_NAME=$BUCKET_NAME node-$DISTRO-$ARCH-builder bash build.sh $NODE_VERSION
 done
+rm -f $DISTRO/$ARCH/commit-table
