@@ -1,20 +1,24 @@
 #!/bin/bash
 set -e
+set -o pipefail
 
 # set env var
 NODE_VERSION=$1
-ARCH=arm
-ARCH_VERSION=armv6hf
-TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
+ARCH=alpine-armhf
+TAR_FILE=node-v$NODE_VERSION-linux-$ARCH.tar.gz
 BUCKET_NAME=$BUCKET_NAME
-
-BUILD_FLAGs='--without-snapshot'
+BINARYNAME=node-v$NODE_VERSION-linux-$ARCH
 
 # compile node
 cd node \
 	&& git checkout v$NODE_VERSION \
-	&& make -j$(nproc) binary DESTCPU=$ARCH CONFIG_FLAGS=$BUILD_FLAGs \
-	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
+	&& ./configure --prefix=/ --shared-zlib --shared-openssl \
+   	&& make -j$(nproc) -C out mksnapshot \
+   	&& paxctl -c -m out/Release/mksnapshot \
+   	&& make install DESTDIR=$BINARYNAME PORTABLE=1 \
+   	&& tar -cf $BINARYNAME.tar $BINARYNAME \
+	&& rm -rf $BINARYNAME \
+	&& gzip -c -f -9 $BINARYNAME.tar > $BINARYNAME.tar.gz \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
 	&& cd /
