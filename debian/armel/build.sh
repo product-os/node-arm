@@ -20,7 +20,7 @@ fi
 
 # compile node
 cd node \
-	&& commit=($(echo "$(grep " V$NODE_VERSION" /commit-table)" | tr " " "\n")) \
+	&& commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n")) \
 	&& git checkout ${commit[0]} \
 	&& make -j$(nproc) binary DESTCPU="$ARCH" CONFIG_FLAGS="$BUILD_FLAGs" \
 	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
