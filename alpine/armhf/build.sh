@@ -11,7 +11,8 @@ BINARYNAME=node-v$NODE_VERSION-linux-$ARCH
 
 # compile node
 cd node \
-	&& git checkout v$NODE_VERSION \
+	&& commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n")) \
+	&& git checkout ${commit[0]} \
 	&& ./configure --prefix=/ --shared-zlib --shared-openssl \
    	&& make -j$(nproc) -C out mksnapshot \
    	&& paxctl -c -m out/Release/mksnapshot \
