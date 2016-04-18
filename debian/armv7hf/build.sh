@@ -9,9 +9,14 @@ ARCH_VERSION=armv7hf
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
+commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
+if [ -z $commit ]; then
+	echo "commit for v$NODE_VERSION not found!"
+	exit 1
+fi
+
 # compile node
 cd node \
-	&& commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n")) \
 	&& git checkout ${commit[0]} \
 	&& make -j$(nproc) binary DESTCPU=$ARCH \
 	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
