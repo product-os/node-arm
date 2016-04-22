@@ -9,9 +9,14 @@ TAR_FILE=node-v$NODE_VERSION-linux-$ARCH.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 BINARYNAME=node-v$NODE_VERSION-linux-$ARCH
 
+commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
+if [ -z $commit ]; then
+	echo "commit for v$NODE_VERSION not found!"
+	exit 1
+fi
+
 # compile node
 cd node \
-	&& commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n")) \
 	&& git checkout ${commit[0]} \
 	&& ./configure --prefix=/ --shared-zlib --shared-openssl \
    	&& make -j$(nproc) -C out mksnapshot \
