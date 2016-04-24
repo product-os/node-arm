@@ -3,7 +3,7 @@ set -e
 set -o pipefail
 
 # comparing version: http://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
-function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
 
 # set env var
 NODE_VERSION=$1
@@ -14,7 +14,7 @@ BUCKET_NAME=$BUCKET_NAME
 
 BUILD_FLAGs='--without-snapshot --with-arm-float-abi=softfp'
 # --with-arm-fpu flag is not available for node versions 0.12.x and 0.10.x
-if version_le "$NODE_VERSION" "4"; then
+if version_ge "$NODE_VERSION" "4"; then
 	BUILD_FLAGs+=' --with-arm-fpu=vfp'
 fi
 
