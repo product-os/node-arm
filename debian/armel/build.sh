@@ -9,13 +9,20 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" 
 NODE_VERSION=$1
 ARCH=arm
 ARCH_VERSION=armel
+DEST_DIR=node-v$NODE_VERSION-linux-$ARCH_VERSION
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
-BUILD_FLAGs='--without-snapshot --with-arm-float-abi=softfp'
+BUILD_FLAGs="--without-snapshot --prefix / --with-arm-float-abi=softfp --dest-cpu=$ARCH"
 # --with-arm-fpu flag is not available for node versions 0.12.x and 0.10.x
 if version_ge "$NODE_VERSION" "4"; then
 	BUILD_FLAGs+=' --with-arm-fpu=vfp'
+fi
+
+if [ $NODE_VERSION == '6.0.0' ]; then
+# Building Node with ICU will break the build so ICU is temporarily disabled.
+# About ICU: https://github.com/nodejs/node/wiki/Intl
+	BUILD_FLAGs+=' --with-intl=none'
 fi
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
@@ -27,8 +34,10 @@ fi
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& make -j$(nproc) binary DESTCPU="$ARCH" CONFIG_FLAGS="$BUILD_FLAGs" \
-	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
+	&& ./configure $BUILD_FLAGs \
+	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
+	&& cp LICENSE $DEST_DIR \
+	&& tar -cvzf $TAR_FILE $DEST_DIR \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
 	&& cd /
