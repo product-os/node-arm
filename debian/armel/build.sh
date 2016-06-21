@@ -19,10 +19,11 @@ if version_ge "$NODE_VERSION" "4"; then
 	BUILD_FLAGs+=' --with-arm-fpu=vfp'
 fi
 
-if [ $NODE_VERSION == '6.0.0' ]; then
-# Building Node with ICU will break the build so ICU is temporarily disabled.
-# About ICU: https://github.com/nodejs/node/wiki/Intl
-	BUILD_FLAGs+=' --with-intl=none'
+if version_ge "$NODE_VERSION" "6"; then
+# ref https://github.com/nodejs/node/issues/7173
+	export CXX_host="g++ -m32"
+	export CC_host="gcc -m32" 
+	export LINK_host="g++ -m32"
 fi
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
