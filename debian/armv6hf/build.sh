@@ -2,6 +2,9 @@
 set -e
 set -o pipefail
 
+# comparing version: http://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
+
 # set env var
 NODE_VERSION=$1
 ARCH=arm
@@ -10,6 +13,13 @@ TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
 BUILD_FLAGs='--without-snapshot'
+
+if version_ge "$NODE_VERSION" "6"; then
+# ref https://github.com/nodejs/node/issues/7173
+	export CXX_host="g++ -m32"
+	export CC_host="gcc -m32" 
+	export LINK_host="g++ -m32"
+fi
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
 if [ -z $commit ]; then
