@@ -2,24 +2,13 @@
 set -e
 set -o pipefail
 
-# comparing version: http://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
-
 # set env var
 NODE_VERSION=$1
 ARCH=arm
-ARCH_VERSION=armv6hf
+ARCH_VERSION=i386
+DEST_DIR=node-v$NODE_VERSION-linux-$ARCH_VERSION
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
-
-BUILD_FLAGs='--without-snapshot'
-
-if version_ge "$NODE_VERSION" "6"; then
-# ref https://github.com/nodejs/node/issues/7173
-	export CXX_host="g++ -m32"
-	export CC_host="gcc -m32" 
-	export LINK_host="g++ -m32"
-fi
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
 if [ -z $commit ]; then
@@ -27,11 +16,16 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
+BUILD_FLAGs="--prefix / --dest-cpu=ia32"
+
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& make -j$(nproc) binary DESTCPU=$ARCH CONFIG_FLAGS=$BUILD_FLAGs \
-	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
+	&& ./configure $BUILD_FLAGs \
+	&& sed -i "s/'want_separate_host_toolset': 1}}/'v8_target_arch':'x87','want_separate_host_toolset': 1}}/" config.gypi \
+	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
+	&& cp LICENSE $DEST_DIR \
+	&& tar -cvzf $TAR_FILE $DEST_DIR \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
 	&& cd /
