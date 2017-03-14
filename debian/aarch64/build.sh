@@ -4,7 +4,7 @@ set -o pipefail
 
 # set env var
 NODE_VERSION=$1
-ARCH=aarch64
+ARCH=arm64
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
