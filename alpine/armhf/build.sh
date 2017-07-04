@@ -20,7 +20,6 @@ cd node \
 	&& git checkout ${commit[0]} \
 	&& ./configure --prefix=/ --shared-zlib --shared-openssl \
    	&& make -j$(nproc) -C out mksnapshot \
-   	&& paxctl -c -m out/Release/mksnapshot \
    	&& make install DESTDIR=$BINARYNAME PORTABLE=1 \
    	&& tar -cf $BINARYNAME.tar $BINARYNAME \
 	&& rm -rf $BINARYNAME \
