@@ -16,7 +16,7 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGs="--prefix / --dest-cpu=ia32"
+BUILD_FLAGs="--prefix / --dest-cpu=ia32 --without-snapshot"
 
 # compile node
 cd node \

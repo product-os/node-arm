@@ -18,8 +18,8 @@ fi
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure --prefix=/ --shared-zlib --shared-openssl \
-   	&& make -j$(nproc) -C out mksnapshot \
+	&& ./configure --prefix=/ --shared-zlib --shared-openssl --without-snapshot \
+   	&& make -j$(nproc) \
    	&& make install DESTDIR=$BINARYNAME PORTABLE=1 \
    	&& tar -cf $BINARYNAME.tar $BINARYNAME \
 	&& rm -rf $BINARYNAME \

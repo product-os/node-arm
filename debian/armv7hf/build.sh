@@ -15,10 +15,12 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
+BUILD_FLAGs='--without-snapshot'
+
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& make -j$(nproc) binary DESTCPU=$ARCH \
+	&& make -j$(nproc) binary DESTCPU=$ARCH CONFIG_FLAGS=$BUILD_FLAGs \
 	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
