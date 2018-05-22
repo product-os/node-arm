@@ -5,7 +5,9 @@ set -o pipefail
 # set env var
 NODE_VERSION=$1
 ARCH=arm64
-TAR_FILE=node-v$NODE_VERSION-linux-$ARCH.tar.gz
+ARCH_VERSION=aarch64
+DEST_DIR=node-v$NODE_VERSION-linux-$ARCH
+TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
@@ -19,8 +21,9 @@ BUILD_FLAGs='--without-snapshot'
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& make -j$(nproc) binary DESTCPU=$ARCH CONFIG_FLAGS=$BUILD_FLAGs \
-	&& mv node-v$NODE_VERSION-linux-$ARCH.tar.gz $TAR_FILE \
+	&& ./configure DESTCPU=$ARCH $BUILD_FLAGs \
+	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
+	&& tar -cvzf $TAR_FILE $DEST_DIR \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
 	&& cd /
