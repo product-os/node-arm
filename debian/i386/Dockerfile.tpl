@@ -1,4 +1,4 @@
-FROM resin/i386-debian:#{SUITE}
+FROM balenalib/i386-debian:#{SUITE}
 
 RUN apt-get -q update \
 		&& apt-get install -y git python python-dev python-pip build-essential wget ca-certificates libssl-dev curl --no-install-recommends \

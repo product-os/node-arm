@@ -1,4 +1,4 @@
-FROM resin/armhf-alpine:latest
+FROM balenalib/armv7hf-alpine:latest
 
 ENV CFLAGS="-D__USE_MISC"
 
