@@ -1,4 +1,4 @@
-FROM resin/aarch64-alpine:latest
+FROM balenalib/aarch64-alpine:latest
 
 ENV CFLAGS="-D__USE_MISC"
 

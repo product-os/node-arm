@@ -1,4 +1,4 @@
-FROM resin/amd64-alpine:latest
+FROM balenalib/amd64-alpine:latest
 
 ENV CFLAGS="-D__USE_MISC"
 

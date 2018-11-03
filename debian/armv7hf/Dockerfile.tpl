@@ -1,4 +1,4 @@
-FROM resin/armv7hf-debian:#{SUITE}
+FROM balenalib/armv7hf-debian:#{SUITE}
 
 RUN apt-get -q update \
 		&& apt-get install -y git python python-dev python-pip build-essential wget ca-certificates libssl-dev curl --no-install-recommends \

@@ -1,4 +1,4 @@
-FROM resin/i386-alpine:latest
+FROM balenalib/i386-alpine:latest
 
 ENV CFLAGS="-D__USE_MISC"
 
