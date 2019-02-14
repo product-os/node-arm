@@ -18,7 +18,7 @@ fi
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure --prefix=/ --shared-zlib --without-snapshot \
+	&& ./configure --prefix=/ --shared-zlib \
    	&& make -j$(nproc) \
    	&& make install DESTDIR=$BINARYNAME PORTABLE=1 \
    	&& tar -cf $BINARYNAME.tar $BINARYNAME \

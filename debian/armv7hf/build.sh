@@ -15,7 +15,7 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGs='--without-snapshot'
+BUILD_FLAGs=''
 
 # compile node
 cd node \

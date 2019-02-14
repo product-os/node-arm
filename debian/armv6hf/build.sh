@@ -12,7 +12,7 @@ ARCH_VERSION=armv6hf
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
-BUILD_FLAGs='--without-snapshot'
+BUILD_FLAGs=''
 
 if version_ge "$NODE_VERSION" "6"; then
 # ref https://github.com/nodejs/node/issues/7173
