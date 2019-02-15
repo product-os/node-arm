@@ -13,7 +13,7 @@ DEST_DIR=node-v$NODE_VERSION-linux-$ARCH_VERSION
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
-BUILD_FLAGs="--without-snapshot --prefix / --with-arm-float-abi=softfp --dest-cpu=$ARCH"
+BUILD_FLAGs="--prefix / --with-arm-float-abi=softfp --dest-cpu=$ARCH"
 # --with-arm-fpu flag is not available for node versions 0.12.x and 0.10.x
 if version_ge "$NODE_VERSION" "4"; then
 	BUILD_FLAGs+=' --with-arm-fpu=vfp'
