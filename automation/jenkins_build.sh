@@ -11,10 +11,10 @@ docker build --no-cache=true -t node-$DISTRO-$ARCH-builder .
 for NODE_VERSION in $NODE_VERSIONS
 do
 	if [ $DISTRO == 'debian' ] && ([ $ARCH == 'armv7hf' ] || [ $ARCH == 'i386' ]); then
-		if version_le $NODE_VERSION 4; then
-			sed -e s~#{SUITE}~wheezy~g Dockerfile.tpl > Dockerfile
-		else
+		if version_le $NODE_VERSION 10; then
 			sed -e s~#{SUITE}~jessie~g Dockerfile.tpl > Dockerfile
+		else
+			sed -e s~#{SUITE}~stretch~g Dockerfile.tpl > Dockerfile
 		fi
 		docker build --no-cache=true -t node-$DISTRO-$ARCH-builder .		
 	fi
