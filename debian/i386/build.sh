@@ -16,13 +16,12 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGs="--prefix / --dest-cpu=ia32"
+BUILD_FLAGs="--prefix / "
 
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
 	&& ./configure $BUILD_FLAGs \
-	&& sed -i "s/'want_separate_host_toolset':/'v8_target_arch':'x87','want_separate_host_toolset':/" config.gypi \
 	&& cat config.gypi \
 	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
 	&& cp LICENSE $DEST_DIR \
