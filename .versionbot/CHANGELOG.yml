@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'node: Add support for v12.11.0'
+      hash: 406cd21ae3f6eaa07470677c1a7b0d604f0c16fd
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.0.4
+  date: 2019-09-27T12:08:44.141Z
+- commits:
     - subject: 'node: Add build info for v12.10.0'
       hash: 14aa5f0926e8a52c4aa0de9efcd77f91d907f7e9
       body: ''
