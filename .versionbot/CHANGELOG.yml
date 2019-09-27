@@ -1,4 +1,28 @@
 - commits:
+    - subject: 'node: Add build info for v12.10.0'
+      hash: 14aa5f0926e8a52c4aa0de9efcd77f91d907f7e9
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.0.3
+  date: 2019-09-05T11:55:16.999Z
+- commits:
+    - subject: 'node: Add build info for v12.9.1'
+      hash: 374eb48e7ba9c3ebf010ea79847d34e8a2e69f93
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.0.2
+  date: 2019-08-27T06:01:57.212Z
+- commits:
     - subject: 'housekeeping: adding CODEOWNERS, repo type, versionbot scaffolding'
       hash: a8b27409a8b8f7ed2714c517dd02f21ba7cd6ac0
       body: ''
