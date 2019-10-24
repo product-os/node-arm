@@ -1,4 +1,25 @@
 - commits:
+    - subject: 'node: Add build info for v10.17.0 and v13.0.1'
+      hash: 67d75000bbd3fde79b0daf9baef69c41d03deabf
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: 'node: Add build info for v12.13.0'
+      hash: 04e99e33c275262a9ac12c6d090c8d6326f94d27
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.0.5
+  date: 2019-10-23T13:40:08.665Z
+- commits:
     - subject: 'node: Add support for v12.11.0'
       hash: 406cd21ae3f6eaa07470677c1a7b0d604f0c16fd
       body: ''
