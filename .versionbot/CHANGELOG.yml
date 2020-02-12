@@ -1,4 +1,52 @@
 - commits:
+    - subject: 'node: Add build info for v13.8.0 v12.15.0 and v10.19.0'
+      hash: 1c2309e3bc2beb73861dc2d0a537fc48d169634b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: 'node: Add build info for v13.5.0 v12.14.0 v10.18.0 and v8.17.0'
+      hash: 24706b7db958058f307050eb82e8a6862c1bfb75
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: 'armv6: Update build script for armv6'
+      hash: 8b5fb2d449af8ad8233c038495500b4effdc1541
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: 'node: Add build info for v13.3.0'
+      hash: d30aefd9598769471888e4445f65b896ef004d46
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: 'node: Add build info for v13.1.0'
+      hash: e2a6952f03c1b0b3e913a7415763e29f54da50dc
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.0.6
+  date: 2020-02-06T12:15:30.839Z
+- commits:
     - subject: 'node: Add build info for v10.17.0 and v13.0.1'
       hash: 67d75000bbd3fde79b0daf9baef69c41d03deabf
       body: ''
