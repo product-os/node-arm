@@ -6,10 +6,10 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" 
 
 # set env var
 NODE_VERSION=$1
-ARCH=alpine-armv7hf
+ARCH_VERSION=amd64
+DEST_DIR=node-v$NODE_VERSION-linux-$ARCH_VERSION
+TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 BUCKET_NAME=$BUCKET_NAME
-BINARYNAME=node-v$NODE_VERSION-linux-$ARCH
-TAR_FILE=$BINARYNAME.tar.gz
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
 if [ -z $commit ]; then
@@ -17,7 +17,7 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGS='--prefix=/ --shared-zlib'
+BUILD_FLAGS="--prefix=/"
 
 # Enable lto from node v11 onwards
 if (version_ge $NODE_VERSION "11"); then
@@ -27,19 +27,17 @@ fi
 # Add --with-intl=none flag and update binary name
 if [ ! -z "$NONE_INTL" ]; then
 	BUILD_FLAGS+=' --with-intl=none'
-	BINARYNAME=node-no-intl-v$NODE_VERSION-linux-$ARCH
-	TAR_FILE=$BINARYNAME.tar.gz
+	TAR_FILE=node-no-intl-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
 fi
 
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
 	&& ./configure $BUILD_FLAGS \
-   	&& make -j$(nproc) \
-   	&& make install DESTDIR=$BINARYNAME PORTABLE=1 \
-   	&& tar -cf $BINARYNAME.tar $BINARYNAME \
-	&& rm -rf $BINARYNAME \
-	&& gzip -c -f -9 $BINARYNAME.tar > $BINARYNAME.tar.gz \
+	&& cat config.gypi \
+	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
+	&& cp LICENSE $DEST_DIR \
+	&& tar -cvzf $TAR_FILE $DEST_DIR \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
 	&& sha256sum $TAR_FILE >> SHASUMS256.txt \
 	&& cd /

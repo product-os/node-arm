@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 set -o pipefail
 
 function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }

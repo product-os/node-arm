@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 set -o pipefail
 
 function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
@@ -33,7 +33,7 @@ fi
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure "$BUILD_FLAGS" \
+	&& ./configure $BUILD_FLAGS \
 	&& cat config.gypi \
 	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
 	&& cp LICENSE $DEST_DIR \

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 set -o pipefail
 
 function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
@@ -34,7 +34,7 @@ fi
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure DESTCPU=$ARCH "$BUILD_FLAGS" \
+	&& ./configure DESTCPU=$ARCH $BUILD_FLAGS \
 	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
 	&& tar -cvzf $TAR_FILE $DEST_DIR \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \
