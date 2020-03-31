@@ -7,9 +7,9 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" 
 # set env var
 NODE_VERSION=$1
 ARCH=alpine-aarch64
-TAR_FILE=node-v$NODE_VERSION-linux-$ARCH.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 BINARYNAME=node-v$NODE_VERSION-linux-$ARCH
+TAR_FILE=$BINARYNAME.tar.gz
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
 if [ -z $commit ]; then
@@ -22,6 +22,13 @@ BUILD_FLAGS='--prefix=/ --shared-zlib'
 # Enable lto from node v11 onwards
 if (version_ge $NODE_VERSION "11"); then
 	BUILD_FLAGS+=' --enable-lto'
+fi
+
+# Add --with-intl=none flag and update binary name
+if [ ! -z "$NONE_INTL" ]; then
+	BUILD_FLAGS+=' --with-intl=none'
+	BINARYNAME=node-no-intl-v$NODE_VERSION-linux-$ARCH
+	TAR_FILE=$BINARYNAME.tar.gz
 fi
 
 # compile node

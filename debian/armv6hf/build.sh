@@ -8,7 +8,7 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" 
 NODE_VERSION=$1
 ARCH_VERSION=armv6hf
 BINARYNAME=node-v$NODE_VERSION-linux-$ARCH_VERSION
-TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
+TAR_FILE=$BINARYNAME.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
@@ -22,6 +22,13 @@ BUILD_FLAGS='--prefix=/'
 # Enable lto from node v11 onwards
 if (version_ge $NODE_VERSION "11"); then
 	BUILD_FLAGS+=' --enable-lto'
+fi
+
+# Add --with-intl=none flag and update binary name
+if [ ! -z "$NONE_INTL" ]; then
+	BUILD_FLAGS+=' --with-intl=none'
+	BINARYNAME=node-no-intl-v$NODE_VERSION-linux-$ARCH_VERSION
+	TAR_FILE=$BINARYNAME.tar.gz
 fi
 
 # compile node

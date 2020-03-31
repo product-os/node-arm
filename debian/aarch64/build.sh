@@ -25,6 +25,12 @@ if (version_ge $NODE_VERSION "11"); then
 	BUILD_FLAGS+=' --enable-lto'
 fi
 
+# Add --with-intl=none flag and update binary name
+if [ ! -z "$NONE_INTL" ]; then
+	BUILD_FLAGS+=' --with-intl=none'
+	TAR_FILE=node-no-intl-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
+fi
+
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
