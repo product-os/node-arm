@@ -2,6 +2,8 @@
 set -e
 set -o pipefail
 
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
+
 # set env var
 NODE_VERSION=$1
 ARCH=arm64
@@ -16,12 +18,17 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGs=''
+BUILD_FLAGS=''
+
+# Enable lto from node v11 onwards
+if (version_ge $NODE_VERSION "11"); then
+	BUILD_FLAGS+=' --enable-lto'
+fi
 
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure DESTCPU=$ARCH $BUILD_FLAGs \
+	&& ./configure DESTCPU=$ARCH "$BUILD_FLAGS" \
 	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
 	&& tar -cvzf $TAR_FILE $DEST_DIR \
 	&& curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt" \

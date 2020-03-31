@@ -2,9 +2,10 @@
 set -e
 set -o pipefail
 
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
+
 # set env var
 NODE_VERSION=$1
-ARCH=arm
 ARCH_VERSION=i386
 DEST_DIR=node-v$NODE_VERSION-linux-$ARCH_VERSION
 TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
@@ -16,12 +17,17 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGs="--prefix / "
+BUILD_FLAGS="--prefix=/"
+
+# Enable lto from node v11 onwards
+if (version_ge $NODE_VERSION "11"); then
+	BUILD_FLAGS+=' --enable-lto'
+fi
 
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure $BUILD_FLAGs \
+	&& ./configure "$BUILD_FLAGS" \
 	&& cat config.gypi \
 	&& make install -j$(nproc) DESTDIR=$DEST_DIR V=1 PORTABLE=1 \
 	&& cp LICENSE $DEST_DIR \
