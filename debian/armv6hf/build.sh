@@ -6,7 +6,7 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" 
 
 # set env var
 NODE_VERSION=$1
-ARCH_VERSION=armv6hf
+ARCH_VERSION=rpi
 BINARYNAME=node-v$NODE_VERSION-linux-$ARCH_VERSION
 TAR_FILE=$BINARYNAME.tar.gz
 BUCKET_NAME=$BUCKET_NAME
