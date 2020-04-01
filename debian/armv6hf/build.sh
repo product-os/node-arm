@@ -1,12 +1,14 @@
 #!/bin/bash
-set -e
+set -ex
 set -o pipefail
+
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
 
 # set env var
 NODE_VERSION=$1
-ARCH_VERSION=armv6hf
+ARCH_VERSION=rpi
 BINARYNAME=node-v$NODE_VERSION-linux-$ARCH_VERSION
-TAR_FILE=node-v$NODE_VERSION-linux-$ARCH_VERSION.tar.gz
+TAR_FILE=$BINARYNAME.tar.gz
 BUCKET_NAME=$BUCKET_NAME
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
@@ -15,12 +17,24 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGs='--prefix=/'
+BUILD_FLAGS='--prefix=/'
+
+# Enable lto from node v11 onwards
+if (version_ge $NODE_VERSION "11"); then
+	BUILD_FLAGS+=' --enable-lto'
+fi
+
+# Add --with-intl=none flag and update binary name
+if [ ! -z "$NONE_INTL" ]; then
+	BUILD_FLAGS+=' --with-intl=none'
+	BINARYNAME=node-no-intl-v$NODE_VERSION-linux-$ARCH_VERSION
+	TAR_FILE=$BINARYNAME.tar.gz
+fi
 
 # compile node
 cd node \
 	&& git checkout ${commit[0]} \
-	&& ./configure "$BUILD_FLAGs" \
+	&& ./configure $BUILD_FLAGS \
    	&& make -j$(nproc) \
    	&& make install DESTDIR=$BINARYNAME PORTABLE=1 \
    	&& tar -cf $BINARYNAME.tar $BINARYNAME \

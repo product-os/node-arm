@@ -18,7 +18,8 @@ do
 		fi
 		docker build --no-cache=true -t node-$DISTRO-$ARCH-builder .		
 	fi
-	docker run --rm -e ACCESS_KEY=$ACCESS_KEY \
+	docker run --rm -e NONE_INTL=$NONE_INTL \
+					-e ACCESS_KEY=$ACCESS_KEY \
 					-e SECRET_KEY=$SECRET_KEY \
 					-e BUCKET_NAME=$BUCKET_NAME node-$DISTRO-$ARCH-builder bash build.sh $NODE_VERSION
 done
