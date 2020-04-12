@@ -1,4 +1,79 @@
 - commits:
+    - subject: Add build info for v12.16.2 and v10.20.0
+      hash: cb75e4682d950839878044ee9942b95d4a60cd1a
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Change armv6hf to rpi to match with arch in contracts
+      hash: a7901a35f13f701130f6c77a46305585031c7ff8
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for Debian amd64
+      hash: d10a21a6c0c46755f875835c18996c6766c86158
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add NONE_INTL env var to produce node binary without intl
+      hash: cf464bf7777c6c17c6533390f11f145cf82e50e8
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add --enable-lto build flag by default from node v11 and onwards
+      hash: 1822eefa3853ec1215ad03c73251aebf80ceafc5
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for v13.12.0
+      hash: 646f5a1c102d0f8112d375f3f3caf788249e6b79
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for node v13.11.0
+      hash: 866320420c722d5e864d6c115097175e544897f1
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: 'node: Add build info for v13.10.1'
+      hash: c0a00288f9d04c6b362fcf0c6b2be114dd0ad0d4
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.1.0
+  date: 2020-04-09T14:53:03.734Z
+- commits:
     - subject: 'node: Add build info for v13.9.0 and v12.16.1'
       hash: 36f560401c4244ae72539e824016809a9759a279
       body: ''
