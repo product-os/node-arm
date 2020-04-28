@@ -20,9 +20,9 @@ fi
 BUILD_FLAGS='--prefix=/'
 
 # Enable lto from node v11 onwards
-if (version_ge $NODE_VERSION "11"); then
-	BUILD_FLAGS+=' --enable-lto'
-fi
+#if (version_ge $NODE_VERSION "11"); then
+#	BUILD_FLAGS+=' --enable-lto'
+#fi
 
 # Add --with-intl=none flag and update binary name
 if [ ! -z "$NONE_INTL" ]; then
