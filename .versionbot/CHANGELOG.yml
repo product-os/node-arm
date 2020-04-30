@@ -1,4 +1,36 @@
 - commits:
+    - subject: Add build info for v12.16.3
+      hash: df061b640e002a00f16bf6f3712e4aebad2f931b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Remove lto build option since it breaks latest node builds
+      hash: 96fe10290c80602597052a9dfd66b08b47fa5a01
+      body: |
+        Something with the lto-wrapper (due to lto build option) breaks the
+        build for arm/aarch64 so we should disable it for now.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for node v14.0.0 and v13.13.0
+      hash: c5539265d3188d038caf1c6cb8b4e8438bd7c09b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.1.1
+  date: 2020-04-29T16:42:37.924Z
+- commits:
     - subject: Add build info for v12.16.2 and v10.20.0
       hash: cb75e4682d950839878044ee9942b95d4a60cd1a
       body: ''
