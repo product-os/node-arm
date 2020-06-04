@@ -1,4 +1,13 @@
 - commits:
+    - subject: Add build info for v14.4.0 v12.18.0 and v10.21.0
+      hash: 261e1593452c6d4c876ec29179ac1cbf7e1c4206
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
     - subject: Add build info for v12.17.0
       hash: 6305ac66118b806f689532b0cf01e98f72e1d26a
       body: ''
@@ -56,7 +65,7 @@
         signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
       author: Trong Nghia Nguyen
   version: 1.1.1
-  date: 2020-05-27T04:09:26.352Z
+  date: 2020-06-04T14:14:35.867Z
 - commits:
     - subject: Add build info for v12.16.2 and v10.20.0
       hash: cb75e4682d950839878044ee9942b95d4a60cd1a
