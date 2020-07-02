@@ -1,4 +1,4 @@
-FROM balenalib/rpi-alpine:latest
+FROM balenalib/rpi-alpine:3.11
 
 ENV CFLAGS="-D__USE_MISC"
 
