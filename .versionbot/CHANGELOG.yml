@@ -1,4 +1,52 @@
 - commits:
+    - subject: Add build info for v14.5.0 and v12.18.2
+      hash: f32b84ce456be377e3c9ce09d96c9f93eb597688
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for v14.4.0 v12.18.0 and v10.21.0
+      hash: 261e1593452c6d4c876ec29179ac1cbf7e1c4206
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for v12.17.0
+      hash: 6305ac66118b806f689532b0cf01e98f72e1d26a
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for v14.3.0
+      hash: 6ca3e3501c5148448da3974c7604497176204eb8
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+    - subject: Add build info for v14.2.0
+      hash: 0d151ac7ea3d970e39fe432009bc60c2dedb7e20
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 1.1.2
+  date: 2020-07-02T11:43:00.306Z
+- commits:
     - subject: Add build info for v14.4.0 v12.18.0 and v10.21.0
       hash: 261e1593452c6d4c876ec29179ac1cbf7e1c4206
       body: ''
