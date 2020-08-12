@@ -1,4 +1,87 @@
 - commits:
+    - subject: Add build info for v14.8.0
+      hash: c6bea688c3e129f1c8d38a294708dbf5f805a4ab
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v14.7.0
+      hash: 816a8320714d32e443cfabe6ecafedec68ea2291
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v10.22.0 v12.18.3 and v14.6.0
+      hash: f575aa7ecb6d11617d3f42e77c0cb08c2782ba5c
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Set Alpine Linux to v3.11 to fix broken deps
+      hash: f7f1452a0b1ff39d14544097840282e1556bb93c
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v14.5.0 and v12.18.2
+      hash: f32b84ce456be377e3c9ce09d96c9f93eb597688
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v14.4.0 v12.18.0 and v10.21.0
+      hash: 261e1593452c6d4c876ec29179ac1cbf7e1c4206
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v12.17.0
+      hash: 6305ac66118b806f689532b0cf01e98f72e1d26a
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v14.3.0
+      hash: 6ca3e3501c5148448da3974c7604497176204eb8
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.3
+  date: 2020-08-12T15:10:29.442Z
+- commits:
     - subject: Add build info for v14.5.0 and v12.18.2
       hash: f32b84ce456be377e3c9ce09d96c9f93eb597688
       body: ''
