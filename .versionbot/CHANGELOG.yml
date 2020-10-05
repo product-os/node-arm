@@ -1,4 +1,27 @@
 - commits:
+    - subject: Add build info for node v14.13.0 and v12.18.4
+      hash: ace5b5a101a8a227d5584219bc9380617b7742ca
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add build info for v14.10.1
+      hash: 6c24d0f845c8ee0530a133f98f981794997a1cdf
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.5
+  date: 2020-10-05T09:15:05.442Z
+- commits:
     - subject: Add build info for v14.9.0
       hash: 0ab28e01502a521d71a57086c78d56b1084429e7
       body: ''
