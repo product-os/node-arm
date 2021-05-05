@@ -1,9 +1,9 @@
-FROM balenalib/i386-alpine:3.11
+FROM balenalib/i386-alpine:latest
 
 ENV CFLAGS="-D__USE_MISC"
 
 RUN apk add --no-cache --virtual build-deps \
-    	nano curl make gcc git g++ python py-pip paxctl libuv-dev \
+    	nano curl make gcc git g++ python3 py3-pip paxctl libuv-dev \
     	musl-dev openssl-dev zlib-dev paxmark \
     	linux-headers binutils-gold coreutils
 
