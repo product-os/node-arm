@@ -14,7 +14,7 @@ do
 		if version_le $NODE_VERSION 10; then
 			sed -e s~#{SUITE}~jessie~g Dockerfile.tpl > Dockerfile
 		else
-			sed -e s~#{SUITE}~stretch~g Dockerfile.tpl > Dockerfile
+			sed -e s~#{SUITE}~buster~g Dockerfile.tpl > Dockerfile
 		fi
 		docker build --no-cache=true -t node-$DISTRO-$ARCH-builder .		
 	fi
