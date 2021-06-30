@@ -1,4 +1,15 @@
 - commits:
+    - subject: Delete CODEOWNERS
+      hash: 07d212842a2dd4dbf0030b9a639f6d2e185dd2a8
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.20
+  date: 2021-06-30T16:53:12.195Z
+- commits:
     - subject: Add build info for v14.17.1
       hash: b4f2b5854e85bb6b0b41a0a19cf6f6d7ef5914d2
       body: ''
