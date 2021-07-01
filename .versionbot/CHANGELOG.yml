@@ -1,5 +1,20 @@
 - commits:
     - subject: Delete CODEOWNERS
+      hash: 6339c792896e9601d5850ff033a1b85be10452c0
+      body: >
+        See
+        https://www.flowdock.com/app/rulemotion/pub/threads/trLcZFnSX9fLZn4LiaIv4xuBbah
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lucian Buzzo <lucian.buzzo@gmail.com>
+        signed-off-by: Lucian Buzzo <lucian.buzzo@gmail.com>
+      author: Lucian Buzzo
+      nested: []
+  version: 1.1.21
+  date: 2021-07-01T08:32:40.721Z
+- commits:
+    - subject: Delete CODEOWNERS
       hash: 07d212842a2dd4dbf0030b9a639f6d2e185dd2a8
       body: ''
       footer:
