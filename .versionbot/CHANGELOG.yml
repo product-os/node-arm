@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add build info for v12.22.2 14.17.2 and 16.4.1
+      hash: 32109d6c4c4608891363230aa90ba7e23b382dae
+      body: |
+        These are security releases
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.22
+  date: 2021-07-02T03:22:24.996Z
+- commits:
     - subject: Delete CODEOWNERS
       hash: 6339c792896e9601d5850ff033a1b85be10452c0
       body: >
