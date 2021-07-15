@@ -8,7 +8,7 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" 
 NODE_VERSION=$1
 ARCH=alpine-amd64
 BUCKET_NAME=$BUCKET_NAME
-BINARYNAME=node-v$NODE_VERSION-linux-$ARCH-system-icu
+BINARYNAME=node-v$NODE_VERSION-linux-$ARCH-small-icu
 TAR_FILE=$BINARYNAME.tar.gz
 
 commit=($(echo "$(grep " v$NODE_VERSION" /commit-table)" | tr " " "\n"))
@@ -17,7 +17,7 @@ if [ -z $commit ]; then
 	exit 1
 fi
 
-BUILD_FLAGS='--prefix=/ --shared-zlib --with-intl=system-icu'
+BUILD_FLAGS='--prefix=/ --shared-zlib --with-intl=small-icu'
 
 # Enable lto from node v11 onwards
 #if (version_ge $NODE_VERSION "11"); then
