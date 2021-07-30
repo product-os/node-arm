@@ -1,4 +1,27 @@
 - commits:
+    - subject: Add build info for v16.6.0 v14.17.4 and v12.22.4
+      hash: a7613e3343fa1797538fc321951234928bb97ea3
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+    - subject: Add Python2 to dependency list for Alpine Linux builds
+      hash: 34678aef4d2368be4cb313ef6acbf3a73d8fd026
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.23
+  date: 2021-07-30T09:49:30.505Z
+- commits:
     - subject: Add build info for v12.22.2 14.17.2 and 16.4.1
       hash: 32109d6c4c4608891363230aa90ba7e23b382dae
       body: |
