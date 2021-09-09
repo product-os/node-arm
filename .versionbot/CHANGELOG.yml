@@ -1,4 +1,17 @@
 - commits:
+    - subject: Add build info for node v16.9.0
+      hash: 0c05913f2061aa9c77f2c2f7d97e4691367dee21
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.28
+  date: 2021-09-09T10:08:50.082Z
+- commits:
     - subject: Add build info for v12.22.6 and v14.17.6
       hash: c2fd74b02b46ae9ec1adec88a4d71b6decfa711d
       body: ''
