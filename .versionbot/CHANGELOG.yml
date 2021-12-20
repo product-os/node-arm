@@ -1,4 +1,19 @@
 - commits:
+    - subject: >-
+        Stop using latest tag for Alpine Linux (Pin to v3.14) to fix missing
+        deps issue
+      hash: fa085bd2feff4031122cda5b29c1f85c4951f873
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.38
+  date: 2021-12-20T16:05:08.544Z
+- commits:
     - subject: Add build info for node v17.3.0 and v12.22.8
       hash: dcfd241904ce1d0dc08b144c7902541e3b33b06d
       body: ''
