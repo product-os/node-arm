@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add build info for v14.19.3 and v18.2.0
+      hash: 4a46f150e7b57c7830975e12841e0c8931ddd184
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.50
+  title: "'Add build info for v14.19.3 and v18.2.0'"
+  date: 2022-05-18T06:03:49.681Z
+- commits:
     - subject: Add build info for v18.1.0 and v14.19.2
       hash: 7b3d714405c55191560b97bd9e795f4459de68bf
       body: ""
