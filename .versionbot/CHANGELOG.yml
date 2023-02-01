@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add build info for v19.5.0
+      hash: 97336856d7036e451b8afee437d9d4feac2708ca
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 1.1.70
+  title: ""
+  date: 2023-02-01T04:07:45.562Z
+- commits:
     - subject: Add build info for node v19.4.0
       hash: 599ce1dede85363a6b7482b37dcebc59ee2b0561
       body: ""
