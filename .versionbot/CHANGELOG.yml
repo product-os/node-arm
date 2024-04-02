@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add build info for node v20.12.0
+      hash: 6dcca769ad2e1679de2f3cdd4e0751246e6ad90a
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Thodoris Greasidis
+      nested: []
+  version: 1.2.0
+  title: ""
+  date: 2024-04-02T20:04:26.753Z
+- commits:
     - subject: Add build info for v19.6.1 v18.14.1 v16.19.1 and v14.21.3
       hash: 5f904b3b9a57156e746b7ea28ff61b7a7a9b4103
       body: ""
