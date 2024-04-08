@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update balenalib/rpi-alpine Docker tag to v3.18
+      hash: 8610dbb270ed9dc41386f311e97e1f0026e16e36
+      body: |
+        Update balenalib/rpi-alpine from 3.11 to 3.18
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 1.2.5
+  title: ""
+  date: 2024-04-08T21:44:19.147Z
+- commits:
     - subject: Update balenalib/i386-alpine Docker tag to v3.18
       hash: 2cd4647a03f9a2f9da3b133809d817d9a552b2a1
       body: |
