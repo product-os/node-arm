@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update balenalib/armv7hf-alpine Docker tag to v3.18
+      hash: 5c3d61535b285271f998ace7cf7f21eccdccd842
+      body: |
+        Update balenalib/armv7hf-alpine from 3.14 to 3.18
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 1.2.3
+  title: ""
+  date: 2024-04-08T19:44:17.261Z
+- commits:
     - subject: Update balenalib/amd64-alpine Docker tag to v3.18
       hash: 2d6a42bda5447d5b1b0e792e146585ec86379c62
       body: |
