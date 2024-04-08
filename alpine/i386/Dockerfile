@@ -1,4 +1,4 @@
-FROM balenalib/i386-alpine:3.14
+FROM balenalib/i386-alpine:3.18
 
 ENV CFLAGS="-D__USE_MISC"
 
