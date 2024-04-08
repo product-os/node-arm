@@ -1,4 +1,4 @@
-FROM balenalib/armv7hf-alpine:3.14
+FROM balenalib/armv7hf-alpine:3.18
 
 ENV CFLAGS="-D__USE_MISC"
 
