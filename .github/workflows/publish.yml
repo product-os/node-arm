@@ -1,0 +1,117 @@
+# https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+name: Publish binaries
+
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+      - "main"
+      - "master"
+  workflow_dispatch:
+    inputs:
+      distro:
+        description: Distro
+        required: true
+        type: choice
+        options:
+          - debian
+          - alpine
+      arch:
+        description: Arch
+        required: true
+        type: choice
+        options:
+          - aarch64
+          - amd64
+          - armv6hf
+          - armv7hf
+          - i386
+      node-version:
+        description: Node version
+        required: true
+        type: string
+      no-intl:
+        description: 'Build with --with-intl=none'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  DISTRO: ${{ inputs.distro || 'debian' }}
+  ARCH: ${{ inputs.arch || 'aarch64' }}
+  NODE_VERSION: ${{ inputs.node-version || '19.6.1' }}
+  NONE_INTL: ${{ inputs.no-intl || '' }}
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  deployments: read
+  id-token: write # AWS GitHub OIDC required: write
+  issues: read
+  discussions: read
+  packages: read
+  pages: read
+  pull-requests: read
+  repository-projects: read
+  security-events: read
+  statuses: read
+
+jobs:
+  publish:
+    name: Publish binaries
+    runs-on: ubuntu-latest
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      # https://github.com/aws-actions/configure-aws-credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
+        id: creds
+        with:
+          role-to-assume: ${{ vars.AWS_IAM_ROLE || 'arn:aws:iam::491725000532:role/resin-packages-role' }}
+          role-session-name: github-${{ github.job }}-${{ github.run_id }}-${{ github.run_attempt }}
+          aws-region: ${{ vars.AWS_DEFAULT_REGION || 'us-east-1' }}
+          # https://github.com/orgs/community/discussions/26636#discussioncomment-3252664
+          mask-aws-account-id: false
+
+      # TODO: use self-hosted amd64/arm64 runners instead of QEMU
+      # https://github.com/docker/setup-qemu-action
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3 # v3.0.0
+        env:
+          LOG_LEVEL: debug
+          # renovate: datasource=docker depName=binfmt packageName=tonistiigi/binfmt
+          BINFMT_VERSION: qemu-v8.0.4-33
+        with:
+          # https://hub.docker.com/r/tonistiigi/binfmt
+          image: tonistiigi/binfmt:${{ env.BINFMT_VERSION }}
+
+      # FIXME: this is insecure as the helper image is built from untrusted user code
+      - name: Build helper image
+        working-directory: ${{ env.DISTRO }}/${{ env.ARCH }}
+        run: |
+          cp -f ../../commit-table .
+          sed -e s~#{SUITE}~buster~g Dockerfile.tpl > Dockerfile
+          docker build --no-cache=true -t "node-$DISTRO-$ARCH-builder" .
+
+      - name: Build and publish binaries
+        # # do not deploy on pull requests
+        # if: github.event_name != 'pull_request'
+        working-directory: ${{ env.DISTRO }}/${{ env.ARCH }}
+        env:
+          BUCKET_NAME: ${{ vars.BUCKET_NAME || 'balena-packages' }}
+          AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.aws-secret-access-key }}
+          AWS_SESSION_TOKEN: ${{ steps.creds.outputs.aws-session-token }}
+        run: |
+          docker run --rm \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_SESSION_TOKEN \
+            -e BUCKET_NAME \
+            -e NONE_INTL \
+            "node-$DISTRO-$ARCH-builder" bash build.sh $NODE_VERSION

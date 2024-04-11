@@ -45,6 +45,5 @@ cd node \
 	&& cd /
 
 # Upload to S3 (using AWS CLI)
-printf "$ACCESS_KEY\n$SECRET_KEY\n$REGION_NAME\n\n" | aws configure
 aws s3 cp node/$TAR_FILE s3://$BUCKET_NAME/node/v$NODE_VERSION/
 aws s3 cp node/SHASUMS256.txt s3://$BUCKET_NAME/

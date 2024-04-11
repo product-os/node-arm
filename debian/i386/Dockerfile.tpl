@@ -6,7 +6,7 @@ RUN apt-get -q update \
 		&& rm -rf /var/lib/apt/lists/*
 
 # Install AWS CLI
-RUN pip install awscli
+RUN pip3 install awscli
 
 RUN git clone https://github.com/nodejs/node.git
 

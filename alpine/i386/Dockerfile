@@ -8,7 +8,7 @@ RUN apk add --no-cache --virtual build-deps \
     	linux-headers binutils-gold coreutils
 
 # Install AWS CLI
-RUN pip install awscli
+RUN pip3 install awscli
 
 RUN git clone https://github.com/nodejs/node.git
 
