@@ -64,6 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       runner: ${{ steps.check-arch.outputs.runner }}
+      awscli-arch: ${{ steps.check-arch.outputs.awscli-arch }}
 
     steps:
       - name: Check architecture
@@ -72,9 +73,11 @@ jobs:
           case ${{ env.ARCH }} in
             amd64|i386)
               echo "runner=actuated-8cpu-8gb" >> "${GITHUB_OUTPUT}"
+              echo "awscli-arch=amd64" >> "${GITHUB_OUTPUT}"
               ;;
             aarch64|armv6hf|armv7hf)
               echo "runner=actuated-arm64-8cpu-8gb" >> "${GITHUB_OUTPUT}"
+              echo "awscli-arch=arm64" >> "${GITHUB_OUTPUT}"
               ;;
             *)
               echo "Unsupported architecture: ${{ env.ARCH }}" ; exit 1 ;;
@@ -122,6 +125,9 @@ jobs:
       # https://github.com/unfor19/install-aws-cli-action
       - name: setup awscli
         uses: unfor19/install-aws-cli-action@v1
+        with:
+          version: 2
+          arch: ${{ needs.select-runner.outputs.awscli-arch }}
 
       - name: s3 copy
         if: github.event_name == 'workflow_dispatch'
