@@ -53,10 +53,37 @@ permissions:
   security-events: read
   statuses: read
 
+# https://docs.github.com/en/actions/using-jobs/using-concurrency
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}-${{ inputs.distro }}-${{ inputs.arch }}-${{ inputs.node-version }}
+  cancel-in-progress: true
+
 jobs:
+  select-runner:
+    name: Select runner
+    runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.check-arch.outputs.runner }}
+
+    steps:
+      - name: Check architecture
+        id: check-arch
+        run: |
+          case ${{ env.ARCH }} in
+            amd64|i386)
+              echo "runner=actuated-8cpu-8gb" >> "${GITHUB_OUTPUT}"
+              ;;
+            aarch64|armv6hf|armv7hf)
+              echo "runner=actuated-arm64-8cpu-8gb" >> "${GITHUB_OUTPUT}"
+              ;;
+            *)
+              echo "Unsupported architecture: ${{ env.ARCH }}" ; exit 1 ;;
+          esac
+
   publish:
     name: Publish binaries
-    runs-on: ubuntu-latest
+    needs: select-runner
+    runs-on: ${{ needs.select-runner.outputs.runner }}
 
     steps:
       # https://github.com/actions/checkout
@@ -73,11 +100,6 @@ jobs:
           aws-region: ${{ vars.AWS_DEFAULT_REGION || 'us-east-1' }}
           # https://github.com/orgs/community/discussions/26636#discussioncomment-3252664
           mask-aws-account-id: false
-
-      # TODO: use self-hosted amd64/arm64 runners instead of QEMU
-      # https://github.com/docker/setup-qemu-action
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
