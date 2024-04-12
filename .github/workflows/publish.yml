@@ -124,39 +124,14 @@ jobs:
         uses: unfor19/install-aws-cli-action@v1
 
       - name: s3 copy
+        if: github.event_name == 'workflow_dispatch'
         run: |
-          curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt"
-          sha256sum *.tar.gz >> SHASUMS256.txt \
           aws s3 cp *.tar.gz "s3://$BUCKET_NAME/node/v$NODE_VERSION/"
+          curl -SLO "http://resin-packages.s3.amazonaws.com/SHASUMS256.txt"
+          sha256sum *.tar.gz >> SHASUMS256.txt
           aws s3 cp SHASUMS256.txt "s3://$BUCKET_NAME/"
         env:
           AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.aws-secret-access-key }}
           AWS_SESSION_TOKEN: ${{ steps.creds.outputs.aws-session-token }}
           AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION || 'us-east-1' }}
-
-      # # FIXME: this is insecure as the helper image is built from untrusted user code
-      # - name: Build helper image
-      #   working-directory: ${{ env.DISTRO }}/${{ env.ARCH }}
-      #   run: |
-      #     cp -f ../../commit-table .
-      #     sed -e s~#{SUITE}~buster~g Dockerfile.tpl > Dockerfile
-      #     docker build --no-cache=true -t "node-$DISTRO-$ARCH-builder" .
-
-      # - name: Build and publish binaries
-      #   # # do not deploy on pull requests
-      #   # if: github.event_name != 'pull_request'
-      #   working-directory: ${{ env.DISTRO }}/${{ env.ARCH }}
-      #   env:
-      #     BUCKET_NAME: ${{ vars.BUCKET_NAME || 'balena-packages' }}
-      #     AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.aws-secret-access-key }}
-      #     AWS_SESSION_TOKEN: ${{ steps.creds.outputs.aws-session-token }}
-      #   run: |
-      #     docker run --rm \
-      #       -e AWS_ACCESS_KEY_ID \
-      #       -e AWS_SECRET_ACCESS_KEY \
-      #       -e AWS_SESSION_TOKEN \
-      #       -e BUCKET_NAME \
-      #       -e NONE_INTL \
-      #       "node-$DISTRO-$ARCH-builder" bash build.sh $NODE_VERSION
