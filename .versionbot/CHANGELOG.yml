@@ -1,4 +1,28 @@
 - commits:
+    - subject: Use a common Dockerfile to build all node variations
+      hash: c0594abf09641b008522ad1e1c6fc7bf792605e8
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Add a manual publish workflow based on jenkins_build.sh
+      hash: 30ca8cf3d202d107f46e8003c0513341d9f8668d
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 1.2.6
+  title: ""
+  date: 2024-04-17T12:24:47.578Z
+- commits:
     - subject: Update balenalib/rpi-alpine Docker tag to v3.18
       hash: 8610dbb270ed9dc41386f311e97e1f0026e16e36
       body: |
