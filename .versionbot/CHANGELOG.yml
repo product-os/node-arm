@@ -1,4 +1,16 @@
 - commits:
+    - subject: Use the belanalib/rpi-{alpine|debian} base image for armv6hf builds
+      hash: d6463ac48f27aa5f1a99a82c3ba3312fc779a921
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 1.2.7
+  title: ""
+  date: 2024-04-17T13:04:41.928Z
+- commits:
     - subject: Use a common Dockerfile to build all node variations
       hash: c0594abf09641b008522ad1e1c6fc7bf792605e8
       body: ""
