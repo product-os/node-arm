@@ -121,6 +121,7 @@ jobs:
             DISTRO=${{ env.DISTRO }}
             BALENA_ARCH=${{ env.ARCH }}
             NODE_VERSION=${{ env.NODE_VERSION }}
+            BALENALIB_ARCH=${{ env.ARCH == 'armv6hf' && 'rpi' || env.ARCH }}
 
       # https://github.com/unfor19/install-aws-cli-action
       - name: setup awscli

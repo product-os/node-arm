@@ -1,14 +1,15 @@
 ARG BALENA_ARCH=%%BALENA_ARCH%%
+ARG BALENALIB_ARCH=%%BALENA_ARCH%%
 ARG DISTRO=debian
 
-FROM balenalib/${BALENA_ARCH}-debian:buster-build AS debian
+FROM balenalib/${BALENALIB_ARCH}-debian:buster-build AS debian
 
 ARG BALENA_ARCH=%%BALENA_ARCH%%
 ENV BUILD_FLAGS='--prefix=/'
 ENV DEST_DIR=node-v${NODE_VERSION}-linux-${BALENA_ARCH}
 ENV TAR_FILE=node-v${NODE_VERSION}-linux-${BALENA_ARCH}.tar.gz
 
-FROM balenalib/${BALENA_ARCH}-alpine:3.18-build AS alpine
+FROM balenalib/${BALENALIB_ARCH}-alpine:3.18-build AS alpine
 
 ARG BALENA_ARCH=%%BALENA_ARCH%%
 ENV BUILD_FLAGS='--prefix=/ --shared-zlib'
