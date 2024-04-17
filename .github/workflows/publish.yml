@@ -90,8 +90,17 @@ jobs:
 
     steps:
       # https://github.com/actions/checkout
-      - name: Checkout
+      - name: Checkout node-arm
         uses: actions/checkout@v4.1.1
+
+      # https://github.com/actions/checkout
+      - name: Checkout nodejs/node
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: nodejs/node
+          ref: v${{ env.NODE_VERSION }}
+          fetch-depth: 1
+          path: node
 
       # https://github.com/aws-actions/configure-aws-credentials
       - name: Configure AWS credentials

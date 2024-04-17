@@ -21,10 +21,10 @@ FROM ${DISTRO} AS build
 
 WORKDIR /src
 
-RUN git clone https://github.com/nodejs/node.git .
+COPY node/ ./
+COPY commit-table ./commit-table
 
 ARG NODE_VERSION
-COPY commit-table ./commit-table
 
 RUN commit="$(awk -v version="v${NODE_VERSION}" '$2 == version {print $1}' commit-table)" && \
 	if [ -z "${commit}" ]; then echo "commit for v$NODE_VERSION not found!" ; exit 1 ; fi && \
