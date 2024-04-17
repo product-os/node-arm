@@ -34,7 +34,7 @@ on:
 
 env:
   DISTRO: ${{ inputs.distro || 'alpine' }}
-  ARCH: ${{ inputs.arch || 'aarch64' }}
+  ARCH: ${{ inputs.arch || 'armv6hf' }}
   NODE_VERSION: ${{ inputs.node-version || '19.6.1' }}
   BUCKET_NAME: ${{ vars.BUCKET_NAME || 'resin-packages' }}
 
