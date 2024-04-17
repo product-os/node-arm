@@ -9,7 +9,7 @@ ENV BUILD_FLAGS='--prefix=/'
 ENV DEST_DIR=node-v${NODE_VERSION}-linux-${BALENA_ARCH}
 ENV TAR_FILE=node-v${NODE_VERSION}-linux-${BALENA_ARCH}.tar.gz
 
-FROM balenalib/${BALENALIB_ARCH}-alpine:3.18-build AS alpine
+FROM balenalib/${BALENALIB_ARCH}-alpine:3.14-build AS alpine
 
 ARG BALENA_ARCH=%%BALENA_ARCH%%
 ENV BUILD_FLAGS='--prefix=/ --shared-zlib'
@@ -21,10 +21,10 @@ FROM ${DISTRO} AS build
 
 WORKDIR /src
 
-RUN git clone https://github.com/nodejs/node.git .
+COPY node/ ./
+COPY commit-table ./commit-table
 
 ARG NODE_VERSION
-COPY commit-table ./commit-table
 
 RUN commit="$(awk -v version="v${NODE_VERSION}" '$2 == version {print $1}' commit-table)" && \
 	if [ -z "${commit}" ]; then echo "commit for v$NODE_VERSION not found!" ; exit 1 ; fi && \

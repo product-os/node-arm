@@ -34,7 +34,7 @@ on:
 
 env:
   DISTRO: ${{ inputs.distro || 'alpine' }}
-  ARCH: ${{ inputs.arch || 'aarch64' }}
+  ARCH: ${{ inputs.arch || 'armv6hf' }}
   NODE_VERSION: ${{ inputs.node-version || '19.6.1' }}
   BUCKET_NAME: ${{ vars.BUCKET_NAME || 'resin-packages' }}
 
@@ -90,8 +90,17 @@ jobs:
 
     steps:
       # https://github.com/actions/checkout
-      - name: Checkout
+      - name: Checkout node-arm
         uses: actions/checkout@v4.1.1
+
+      # https://github.com/actions/checkout
+      - name: Checkout nodejs/node
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: nodejs/node
+          ref: v${{ env.NODE_VERSION }}
+          fetch-depth: 1
+          path: node
 
       # https://github.com/aws-actions/configure-aws-credentials
       - name: Configure AWS credentials
