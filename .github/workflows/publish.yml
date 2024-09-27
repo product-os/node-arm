@@ -72,11 +72,11 @@ jobs:
         run: |
           case ${{ env.ARCH }} in
             amd64|i386)
-              echo "runner=actuated-8cpu-8gb" >> "${GITHUB_OUTPUT}"
+              echo "runner=[\"self-hosted\",\"X64\"]" >> "${GITHUB_OUTPUT}"
               echo "awscli-arch=amd64" >> "${GITHUB_OUTPUT}"
               ;;
             aarch64|armv6hf|armv7hf)
-              echo "runner=actuated-arm64-8cpu-8gb" >> "${GITHUB_OUTPUT}"
+              echo "runner=[\"self-hosted\",\"ARM64\"]" >> "${GITHUB_OUTPUT}"
               echo "awscli-arch=arm64" >> "${GITHUB_OUTPUT}"
               ;;
             *)
@@ -86,7 +86,7 @@ jobs:
   publish:
     name: Publish binaries
     needs: select-runner
-    runs-on: ${{ needs.select-runner.outputs.runner }}
+    runs-on: ${{ fromJSON(needs.select-runner.outputs.runner) }}
 
     steps:
       # https://github.com/actions/checkout
