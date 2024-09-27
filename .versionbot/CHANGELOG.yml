@@ -1,4 +1,16 @@
 - commits:
+    - subject: "CI: Update checkout settings"
+      hash: 31af1c421462c299827d6722dc3e025a22c9fcdc
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 1.2.8
+  title: ""
+  date: 2024-09-27T22:39:14.356Z
+- commits:
     - subject: Use the belanalib/rpi-{alpine|debian} base image for armv6hf builds
       hash: d6463ac48f27aa5f1a99a82c3ba3312fc779a921
       body: ""
