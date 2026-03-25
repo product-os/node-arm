@@ -1,4 +1,26 @@
 - commits:
+    - subject: Update GitHub Actions
+      hash: 8ad3ac49154a3dca528fa465ed84d9eafa60c464
+      body: |
+        Update actions/checkout from 4.1.1 to 4.3.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+    - subject: Pin dependencies
+      hash: 4463b41a4f2033a1c3dc98c2b4a87bf60a367003
+      body: |
+        Update actions/checkout
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.2.9
+  title: ""
+  date: 2026-03-25T20:34:36.282Z
+- commits:
     - subject: "CI: Update checkout settings"
       hash: 31af1c421462c299827d6722dc3e025a22c9fcdc
       body: ""
@@ -843,9 +865,8 @@
 - commits:
     - subject: Delete CODEOWNERS
       hash: 6339c792896e9601d5850ff033a1b85be10452c0
-      body: >
-        See
-        https://www.flowdock.com/app/rulemotion/pub/threads/trLcZFnSX9fLZn4LiaIv4xuBbah
+      body: |
+        See https://www.flowdock.com/app/rulemotion/pub/threads/trLcZFnSX9fLZn4LiaIv4xuBbah
       footer:
         Change-type: patch
         change-type: patch
