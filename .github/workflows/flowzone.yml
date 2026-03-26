@@ -10,5 +10,5 @@ on:
 jobs:
   flowzone:
     name: Flowzone
-    uses: product-os/flowzone/.github/workflows/flowzone.yml@4815186df63bae8a39e85ba6ff7900a3c18e4025 # master
+    uses: product-os/flowzone/.github/workflows/flowzone.yml@b79645a45edc8e8edc96406602eca2ac1051e606 # master
     secrets: inherit
