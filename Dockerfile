@@ -21,9 +21,9 @@ FROM ${DISTRO} AS build
 
 WORKDIR /src
 
-RUN git clone https://github.com/nodejs/node.git .
-
 ARG NODE_VERSION
+RUN git clone https://github.com/nodejs/node.git . --branch "v${NODE_VERSION}" --depth 1
+
 COPY commit-table ./commit-table
 
 RUN commit="$(awk -v version="v${NODE_VERSION}" '$2 == version {print $1}' commit-table)" && \
